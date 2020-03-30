@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 import { startOfHour, parseISO, isBefore, format } from 'date-fns';
+import { Op } from 'sequelize';
+
 import pt from 'date-fns/locale/pt';
 import Appointment from '../models/Appointment';
 import User from '../models/User';
@@ -85,6 +87,18 @@ class AppointmentController {
         .status(400)
         .json({ error: 'Appointment date is not availible' });
     }
+
+    /* const checkProviderIgualUsuario = await Appointment.findOne({
+      where: {
+        provider_id: {
+          [Op.eq]: req.userId,
+        },
+      },
+    });
+
+    if (checkProviderIgualUsuario) {
+      return res.status(400).json({ error: 'Provider is not equal user' });
+    } */
 
     const appointment = await Appointment.create({
       user_id: req.userId,
