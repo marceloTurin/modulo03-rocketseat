@@ -6,9 +6,14 @@ import File from '../models/File';
 
 class AppointmentController {
   async index(req, res) {
+    const { page = 1 } = req.query;
+
     const appointments = await Appointment.findAll({
       where: { user_id: req.userId, canceled_at: null },
       order: ['date'],
+      // Paginação de agendamentos
+      limit: 20,
+      offset: (page - 1) * 20,
       attributes: ['id', 'date'],
       // Referencia os dados do provedor do agendamento
       include: [
