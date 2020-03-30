@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { startOfHour, parseISO, isBefore, format } from 'date-fns';
-import { Op } from 'sequelize';
+// import { Op } from 'sequelize';
 
 import pt from 'date-fns/locale/pt';
 import Appointment from '../models/Appointment';
