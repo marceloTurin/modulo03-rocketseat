@@ -21,7 +21,7 @@ class AppointmentController {
       // Paginação de agendamentos
       limit: 20,
       offset: (page - 1) * 20,
-      attributes: ['id', 'date'],
+      attributes: ['id', 'date', 'past', 'cancelable'],
       // Referencia os dados do provedor do agendamento
       include: [
         {
